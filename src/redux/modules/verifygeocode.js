@@ -1,6 +1,6 @@
 import config from '../../config';
 
-const googleTimezonePath = config.googleGeocodePath;
+const googleGeocodePath = config.googleGeocodePath;
 const googleAPIKey = config.googleApiKey;
 
 const LOAD = 'locationtime/LOAD';
@@ -42,12 +42,13 @@ export default function reducer(state = initialState, action = {}) {
     default:
       return state;
   }
+}
 
 export function fetch(location) {
-	const reqPath = 'address=' + location + '&key=' + googleAPIKey;
+  const reqPath = googleGeocodePath + 'address=' + location + '&key=' + googleAPIKey;
 
-	return {
-		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-		promise: (client) => client.get(reqPath)
-	};
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: (client) => client.get(reqPath)
+  };
 }

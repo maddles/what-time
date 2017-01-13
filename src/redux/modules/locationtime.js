@@ -46,10 +46,10 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export function fetch(geocode, timestamp) {
-	const reqPath = 'location=' + googleTimezonePath + '&timestamp=' + timestamp + '&key=' + googleAPIKey;
+  const reqPath = 'location=' + googleTimezonePath + '&timestamp=' + timestamp + '&key=' + googleAPIKey;
 
-	return {
-		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-		promise: (client) => client.get(reqPath)
-	};
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: (client) => client.get(reqPath)
+  };
 }
